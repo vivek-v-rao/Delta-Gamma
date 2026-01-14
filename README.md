@@ -8,14 +8,14 @@ The goal is to keep the simplicity of a local delta-gamma (second-order Taylor) 
 
 Given a current spot S0 and an ATM straddle (1 call + 1 put, same strike K and maturity T), the script builds a pandas DataFrame across a grid of spot scenarios S:
 
-- pnl_exact_bs
+- <b>pnl_exact_bs</b><br>
   Exact PnL from repricing the straddle with Black-Scholes at each S and subtracting the initial value at S0.
 
-- pnl_delta_gamma
+- <b>pnl_delta_gamma</b><br>
   Local second-order Taylor approximation about S0:
   pnl(S) = delta0 * (S-S0) + 0.5 * gamma0 * (S-S0)^2
 
-- pnl_piecewise_clip
+- <b>pnl_piecewise_clip</b><br>
   C1 piecewise quadratic/linear proxy:
   - quadratic in the middle (same formula as pnl_delta_gamma)
   - linear in the tails with slopes clipped to the natural straddle delta limits [-1, +1]
@@ -24,7 +24,7 @@ Given a current spot S0 and an ATM straddle (1 call + 1 put, same strike K and m
     S_L = S0 + x_L, S_R = S0 + x_R
   For an ATM straddle, delta_L=-1, delta_R=+1 (and typically delta0 is near 0).
 
-- pnl_piecewise_fit_bs
+- <b>pnl_piecewise_fit_bs</b><br>
   Same piecewise quadratic/linear shape, but the join points (S_L, S_R) are chosen so that the piecewise model matches Black-Scholes PnL at the joins while keeping the tail slopes fixed. This usually improves tail accuracy, at the cost of extra setup work (a small 1D root solve per side).
 
 ## Plot
