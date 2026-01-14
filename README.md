@@ -58,11 +58,7 @@ Edit the parameters near the top of the script to change:
 - scenario grid range and spacing
 - whether to show the plot
 
-The script prints the key values (V0, delta0, gamma0, join points) and outputs the DataFrame in-memory. You can easily add:
-
-    df.to_csv("results.csv", index=False)
-
-if you want a file.
+The script prints the key values (V0, delta0, gamma0, join points) and outputs the DataFrame in-memory.
 
 ## Notes
 
