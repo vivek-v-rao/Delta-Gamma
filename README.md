@@ -51,7 +51,7 @@ Install dependencies:
 
 Run the script (replace with your file name if different):
 
-    python delta_gamma_straddle.py
+    python xdelta_gamma.py
 
 Edit the parameters near the top of the script to change:
 - S0, K, T, sigma
