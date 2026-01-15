@@ -1,3 +1,15 @@
+"""
+Compare simple PnL approximations for an at-the-money Black-Scholes straddle (r=q=0) across spot scenarios.
+
+Build a pandas DataFrame with:
+- pnl_delta_gamma: local Taylor (delta+gamma) approximation about S0
+- pnl_piecewise_clip: C1 piecewise quadratic/linear proxy that clips delta to [-1, +1]
+- pnl_piecewise_fit_bs: same shape but with join points chosen to match BS PnL at the joins
+- pnl_exact_bs: exact Black-Scholes repricing PnL
+
+Optionally plot exact_bs, delta_gamma, and piecewise_clip with vertical lines at the clip join points.
+"""
+
 import numpy as np
 import pandas as pd
 import math
@@ -209,5 +221,6 @@ if PLOT:
     plt.legend()
     plt.xlabel("S")
     plt.ylabel("profit vs S0")
-    plt.title("ATM straddle PnL: delta-gamma vs piecewise_clip")
+#    plt.title("ATM straddle PnL: delta-gamma vs piecewise_clip")
+    plt.title(f"ATM straddle PnL (vol={sigma*100:.0f}%, T={T:.2f}): delta-gamma vs piecewise_clip")
     plt.show()
